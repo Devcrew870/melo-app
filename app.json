@@ -15,7 +15,9 @@
         "ITSAppUsesNonExemptEncryption": false,
         "CFBundleURLTypes": [
           {
-            "CFBundleURLSchemes": ["meloapp"]
+            "CFBundleURLSchemes": [
+              "meloapp"
+            ]
           }
         ]
       }
@@ -37,9 +39,25 @@
             "scheme": "https",
             "host": "meloapp.exp.direct"
           },
-          "category": ["BROWSABLE", "DEFAULT"]
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        },
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": {
+            "scheme": "https",
+            "host": "meloapp.exp.direct"
+          },
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
         }
-      ]
+      ],
+      "package": "com.akshaivinu.meloapp"
     },
     "web": {
       "output": "static",
@@ -47,6 +65,12 @@
     },
     "plugins": [
       "expo-router",
+      [
+        "@react-native-google-signin/google-signin",
+        {
+          "iosUrlScheme": "com.googleusercontent.apps.171898382206-gn3pn5ivlsdjhgdbqmkhra192da4m88n"
+        }
+      ],
       [
         "expo-splash-screen",
         {

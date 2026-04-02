@@ -10,45 +10,37 @@ import {
 } from 'react-native';
 import { COLORS } from '../../src/theme/colors';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useGoogleAuth } from '@/src/services/googleAuth';
+import { signInWithGoogle } from '../../src/services/googleAuth';
 
 const Login = () => {
-  const { response, promptAsync, request } = useGoogleAuth();
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    if (response?.type === 'success') {
-      const { id_token } = response.params;
-      console.log('✅ Login successful with token:', id_token);
-      // TODO: Navigate to home screen or save token to store
-    } else if (response?.type === 'error') {
-      console.error('❌ Login error:', response.params);
-      Alert.alert(
-        'Login Failed',
-        'Failed to sign in with Google. Please try again.',
-      );
-      setLoading(false);
-    } else if (response?.type === 'dismiss') {
-      console.log('⚠️ Login cancelled by user');
-      setLoading(false);
-    }
-  }, [response]);
 
   const handleGoogleSignIn = async () => {
     try {
       setLoading(true);
-      if (!request) {
-        Alert.alert('Error', 'Auth request not initialized. Please try again.');
-        setLoading(false);
-        return;
-      }
-      await promptAsync();
-    } catch (error) {
-      console.error('Google sign-in error:', error);
+      console.log('🔄 Starting Google Sign-In...');
+
+      const userInfo = await signInWithGoogle();
+
+      console.log('✅ Sign-In successful!');
+      console.log('User:', userInfo.user.email);
+      console.log('ID Token:', userInfo.idToken);
+
+      // TODO: Store token in secure storage
+      // TODO: Save user info to app state (Zustand store)
+      // TODO: Navigate to home screen
       Alert.alert(
-        'Error',
-        'An error occurred during sign-in. Please try again.',
+        'Success',
+        `Welcome ${userInfo.user.name || userInfo.user.email}!`,
       );
+    } catch (error) {
+      console.error('❌ Sign-In failed:', error);
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : 'An error occurred during sign in';
+      Alert.alert('Sign-In Failed', errorMessage);
+    } finally {
       setLoading(false);
     }
   };
