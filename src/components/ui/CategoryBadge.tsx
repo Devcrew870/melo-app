@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   categoryBadgeCircle: {
-    height: 50,
-    width: 50,
+    height: 60,
+    width: 60,
     borderRadius: 100,
     overflow: 'hidden',
     marginBottom: 4,

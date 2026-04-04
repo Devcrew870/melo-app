@@ -117,21 +117,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 20,
   },
-  categoryBadgeCircle: {
-    height: 60,
-    width: 60,
-    borderRadius: 100,
-  },
-  categoryBadgeImage: {
-    height: 60,
-    width: 60,
-    borderRadius: 100,
-  },
   categoryBody: {
     marginTop: 15,
     flexDirection: 'row',
-  },
-  categoryHolder: {
-    alignItems: 'center',
   },
 });
