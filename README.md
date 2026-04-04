@@ -1,13 +1,4 @@
-# Melo App
 
-A modern music streaming application built with [Expo](https://expo.dev) and React Native, featuring cross-platform support for iOS, Android, and web.
-
-## Features
-
-- 🔐 Google Authentication
-- 📱 Cross-platform support (iOS, Android, Web)
-- ⚡ Built with React Native and Expo Router
-- 🎨 Modern UI with custom theming
 
 ## Prerequisites
 
@@ -45,26 +36,31 @@ A modern music streaming application built with [Expo](https://expo.dev) and Rea
    - **Web**: Press `w`
    - **Expo Go**: Scan the QR code with the Expo Go app
 
-## Project Structure
 
-```
-melo-app/
-├── app/                    # Expo Router pages and layouts
-│   ├── _layout.tsx        # Root layout
-│   ├── index.tsx          # Home screen
-│   └── (auth)/            # Auth group routes
-│       └── login.tsx      # Login screen
-├── src/
-│   ├── components/        # Reusable React components
-│   ├── services/          # API and authentication services
-│   │   └── googleAuth.ts  # Google OAuth integration
-│   ├── store/             # State management (Zustand)
-│   ├── theme/             # Theme and styling
-│   │   └── colors.ts      # Color palette
-│   └── types/             # TypeScript type definitions
-├── assets/                # Images and static assets
-└── package.json           # Project dependencies
-```
+Android running 
+
+-- required android studio download an android emulator
+
+Install expo-dev-client
+npx expo install expo-dev-client
+
+Expo account
+
+Sign up for an Expo account, if you haven't already.
+
+EAS CLI
+
+The EAS CLI installed and logged in.
+
+npm install -g eas-cli 
+
+eas login
+
+eas build --platform android --profile development
+
+then run expo start
+
+if confused about comments refer (https://docs.expo.dev/develop/development-builds/create-a-build/?redirected)
 
 ## Available Scripts
 
@@ -85,32 +81,3 @@ melo-app/
 - **TypeScript** - Static type checking
 - **Zustand** - State management
 - **Expo Auth Session** - OAuth2 authentication
-- **Axios** - HTTP client
-
-## Authentication
-
-The app uses Google OAuth for authentication via `expo-auth-session`. Configure your Google Client ID in the environment variables for the authentication flow to work properly.
-
-## Development
-
-- Edit files in the `app/` directory to modify screens and navigation
-- Edit files in `src/` for business logic, components, and services
-- The app uses file-based routing - create files in `app/` and they automatically become routes
-- Use TypeScript for type safety
-
-## Troubleshooting
-
-- **Build errors**: Run `npm install` to ensure all dependencies are installed
-- **Auth issues**: Verify your `GOOGLE_CLIENT_ID` is correctly set in the environment
-- **Port conflicts**: The default port is 8081; use `npx expo start --port 3000` for a different port
-
-## Resources
-
-- [Expo Documentation](https://docs.expo.dev/)
-- [React Native Documentation](https://reactnative.dev/)
-- [Expo Router Guide](https://docs.expo.dev/router/introduction/)
-- [TypeScript in React Native](https://www.typescriptlang.org/docs/handbook/react.html)
-
-## License
-
-This project is open source and available under the MIT License.

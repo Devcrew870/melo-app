@@ -5,18 +5,17 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 
-const EXPO_CLIENT_ID =
-  '171898382206-t6ta0os72rqpdr0okfdivfrqog4bbc1c.apps.googleusercontent.com'; // Web Application
-const ANDROID_CLIENT_ID =
-  '171898382206-rqn9jp8hjkrp3jp6lpvqq7p3m7lpjq2j.apps.googleusercontent.com'; // Android
-const IOS_CLIENT_ID =
-  '171898382206-gn3pn5ivlsdjhgdbqmkhra192da4m88n.apps.googleusercontent.com'; // iOS
+// const EXPO_CLIENT_ID =
+//   '171898382206-t6ta0os72rqpdr0okfdivfrqog4bbc1c.apps.googleusercontent.com'; // Web Application
+// const ANDROID_CLIENT_ID =
+//   '171898382206-rqn9jp8hjkrp3jp6lpvqq7p3m7lpjq2j.apps.googleusercontent.com'; // Android
+// const IOS_CLIENT_ID =
+//   '171898382206-gn3pn5ivlsdjhgdbqmkhra192da4m88n.apps.googleusercontent.com'; // iOS
 const WEB_CLIENT_ID =
   '171898382206-t6ta0os72rqpdr0okfdivfrqog4bbc1c.apps.googleusercontent.com'; // Web
 
 GoogleSignin.configure({
   webClientId: WEB_CLIENT_ID,
-  iosClientId: IOS_CLIENT_ID,
   offlineAccess: false,
   scopes: ['profile', 'email'],
 });

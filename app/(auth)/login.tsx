@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   Image,
   Text,
@@ -10,29 +10,19 @@ import {
 } from 'react-native';
 import { COLORS } from '../../src/theme/colors';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { signInWithGoogle } from '../../src/services/googleAuth';
+import { useAuth } from '../../src/contexts/AuthContext';
+import { useRouter } from 'expo-router';
 
 const Login = () => {
-  const [loading, setLoading] = useState(false);
+  const { signIn, isLoading } = useAuth();
+  const router = useRouter();
 
   const handleGoogleSignIn = async () => {
     try {
-      setLoading(true);
-      console.log('🔄 Starting Google Sign-In...');
-
-      const userInfo = await signInWithGoogle();
-
-      console.log('✅ Sign-In successful!');
-      console.log('User:', userInfo.user.email);
-      console.log('ID Token:', userInfo.idToken);
-
-      // TODO: Store token in secure storage
-      // TODO: Save user info to app state (Zustand store)
-      // TODO: Navigate to home screen
-      Alert.alert(
-        'Success',
-        `Welcome ${userInfo.user.name || userInfo.user.email}!`,
-      );
+      await signIn();
+      // Force navigation to home as backup
+      console.log('Sign in successful, navigating to home');
+      router.replace('/');
     } catch (error) {
       console.error('❌ Sign-In failed:', error);
       const errorMessage =
@@ -40,8 +30,6 @@ const Login = () => {
           ? error.message
           : 'An error occurred during sign in';
       Alert.alert('Sign-In Failed', errorMessage);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -72,9 +60,9 @@ const Login = () => {
         <TouchableOpacity
           style={styles.button}
           onPress={handleGoogleSignIn}
-          disabled={loading}
+          disabled={isLoading}
         >
-          {loading ? (
+          {isLoading ? (
             <ActivityIndicator color={COLORS.primary} size="small" />
           ) : (
             <>
