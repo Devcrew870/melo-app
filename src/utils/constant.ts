@@ -38,3 +38,36 @@ export const popularVendors: PopularVendor[] = [
     distance: '2.5 km',
   },
 ];
+
+export const categories = [
+  {
+    id: 1,
+    name: 'Cake',
+    image: require('../../assets/images/categories/cake.jpg'),
+  },
+  {
+    id: 2,
+    name: 'Gift Items',
+    image: require('../../assets/images/categories/gift.jpg'),
+  },
+  {
+    id: 3,
+    name: 'Aari Works',
+    image: require('../../assets/images/categories/aari.jpg'),
+  },
+  {
+    id: 4,
+    name: 'Stitching',
+    image: require('../../assets/images/categories/stitching.jpg'),
+  },
+  {
+    id: 5,
+    name: 'Mehendi',
+    image: require('../../assets/images/categories/mehendi.jpg'),
+  },
+  {
+    id: 6,
+    name: 'Makeup Artists',
+    image: require('../../assets/images/categories/makeup.jpg'),
+  },
+];

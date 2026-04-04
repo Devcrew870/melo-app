@@ -10,8 +10,9 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { COLORS } from '../src/theme/colors';
 import Topbar from '@/src/components/layout/Topbar';
-import { popularVendors } from '@/src/utils/constant';
+import { categories, popularVendors } from '@/src/utils/constant';
 import PopularCard from '@/src/components/ui/PopularCard';
+import CategoryBadge from '@/src/components/ui/CategoryBadge';
 
 export default function Home() {
   const { user, signOut, isAuthenticated } = useAuth();
@@ -47,7 +48,24 @@ export default function Home() {
             keyExtractor={item => item.id.toString()}
             ItemSeparatorComponent={() => <View style={{ width: 12 }} />}
             horizontal
-            showsHorizontalScrollIndicator
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
+      </View>
+
+      <View style={styles.categoryContainer}>
+        <View style={styles.popularHeaderSeperation}>
+          <Text style={styles.sectionHeading}>Categories</Text>
+          <Text style={styles.linkText}>View All</Text>
+        </View>
+        <View style={styles.categoryBody}>
+          <FlatList
+            data={categories}
+            renderItem={({ item }) => <CategoryBadge item={item} />}
+            keyExtractor={item => item.id.toString()}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            ItemSeparatorComponent={() => <View style={{ width: 8 }} />}
           />
         </View>
       </View>
@@ -94,5 +112,26 @@ const styles = StyleSheet.create({
   },
   popularBody: {
     marginTop: 15,
+  },
+  categoryContainer: {
+    paddingHorizontal: 20,
+    paddingTop: 20,
+  },
+  categoryBadgeCircle: {
+    height: 60,
+    width: 60,
+    borderRadius: 100,
+  },
+  categoryBadgeImage: {
+    height: 60,
+    width: 60,
+    borderRadius: 100,
+  },
+  categoryBody: {
+    marginTop: 15,
+    flexDirection: 'row',
+  },
+  categoryHolder: {
+    alignItems: 'center',
   },
 });
