@@ -1,6 +1,10 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { signInWithGoogle, signOutFromGoogle, UserInfo } from '../services/googleAuth';
+import {
+  signInWithGoogle,
+  signOutFromGoogle,
+  UserInfo,
+} from '../services/googleAuth';
 
 interface AuthContextType {
   user: UserInfo['user'] | null;
@@ -15,7 +19,9 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 const AUTH_TOKEN_KEY = '@auth_token';
 const USER_INFO_KEY = '@user_info';
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [user, setUser] = useState<UserInfo['user'] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 

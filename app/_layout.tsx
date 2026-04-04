@@ -12,8 +12,6 @@ function RootLayoutNav() {
   useEffect(() => {
     if (isLoading) return;
 
-    console.log('Auth state:', { isAuthenticated, pathname, segments });
-
     // Simple routing: if not authenticated and not on login page, go to login
     if (!isAuthenticated && pathname !== '/(auth)/login') {
       console.log('🔄 Redirecting unauthenticated user to login');

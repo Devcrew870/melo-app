@@ -1,7 +1,17 @@
 import { useAuth } from '../src/contexts/AuthContext';
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  FlatList,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { COLORS } from '../src/theme/colors';
+import Topbar from '@/src/components/layout/Topbar';
+import { popularVendors } from '@/src/utils/constant';
+import PopularCard from '@/src/components/ui/PopularCard';
 
 export default function Home() {
   const { user, signOut, isAuthenticated } = useAuth();
@@ -11,30 +21,35 @@ export default function Home() {
     return null; // _layout.tsx should handle routing
   }
 
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-    } catch (error) {
-      console.error('Sign out error:', error);
-    }
-  };
-
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.welcomeText}>Welcome to Melo App!</Text>
-        {user && (
-          <View style={styles.userInfo}>
-            <Text style={styles.userName}>
-              Hello, {user.name || user.email}!
-            </Text>
-            <Text style={styles.userEmail}>{user.email}</Text>
-          </View>
-        )}
+      <Topbar />
+      {/* home header */}
+      <View style={styles.boxContainer}>
+        <Text style={styles.heading}>
+          Discover local talent,{'\n'}
+          made just for you 🌿
+        </Text>
+        <Text style={styles.subheading}>
+          Unique services, handcrafted with love - near you.
+        </Text>
+      </View>
 
-        <TouchableOpacity style={styles.signOutButton} onPress={handleSignOut}>
-          <Text style={styles.signOutButtonText}>Sign Out</Text>
-        </TouchableOpacity>
+      <View style={styles.popularContainer}>
+        <View style={styles.popularHeaderSeperation}>
+          <Text style={styles.sectionHeading}>Popular near you</Text>
+          <Text style={styles.linkText}>See All</Text>
+        </View>
+        <View style={styles.popularBody}>
+          <FlatList
+            data={popularVendors}
+            renderItem={({ item }) => <PopularCard item={item} />}
+            keyExtractor={item => item.id.toString()}
+            ItemSeparatorComponent={() => <View style={{ width: 12 }} />}
+            horizontal
+            showsHorizontalScrollIndicator
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -45,42 +60,39 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.background,
   },
-  content: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  boxContainer: {
     paddingHorizontal: 20,
   },
-  welcomeText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: COLORS.textPrimary,
-    marginBottom: 30,
-    textAlign: 'center',
+  heading: {
+    fontSize: 20,
+    fontWeight: '700',
+    marginBottom: 5,
   },
-  userInfo: {
+  subheading: {
+    fontSize: 12,
+    color: 'gray',
+  },
+  popularContainer: {
+    paddingHorizontal: 20,
+    paddingTop: 20,
+  },
+  sectionHeading: {
+    fontSize: 15,
+    fontWeight: '500',
+  },
+  popularHeaderSeperation: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 40,
   },
-  userName: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: COLORS.textPrimary,
-    marginBottom: 8,
+  linkText: {
+    fontWeight: '400',
+    textDecorationLine: 'underline',
+    lineHeight: 20,
+    fontSize: 14,
   },
-  userEmail: {
-    fontSize: 16,
-    color: COLORS.textSecondary,
-  },
-  signOutButton: {
-    backgroundColor: COLORS.primary,
-    paddingHorizontal: 30,
-    paddingVertical: 12,
-    borderRadius: 8,
-  },
-  signOutButtonText: {
-    color: COLORS.white,
-    fontSize: 16,
-    fontWeight: '600',
+  popularBody: {
+    marginTop: 15,
   },
 });

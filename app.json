@@ -15,9 +15,7 @@
         "ITSAppUsesNonExemptEncryption": false,
         "CFBundleURLTypes": [
           {
-            "CFBundleURLSchemes": [
-              "meloapp"
-            ]
+            "CFBundleURLSchemes": ["meloapp"]
           }
         ]
       }
@@ -39,10 +37,7 @@
             "scheme": "https",
             "host": "meloapp.exp.direct"
           },
-          "category": [
-            "BROWSABLE",
-            "DEFAULT"
-          ]
+          "category": ["BROWSABLE", "DEFAULT"]
         },
         {
           "action": "VIEW",
@@ -51,10 +46,7 @@
             "scheme": "https",
             "host": "meloapp.exp.direct"
           },
-          "category": [
-            "BROWSABLE",
-            "DEFAULT"
-          ]
+          "category": ["BROWSABLE", "DEFAULT"]
         }
       ],
       "package": "com.akshaivinu.meloapp"

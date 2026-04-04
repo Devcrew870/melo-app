@@ -20,7 +20,7 @@ const Login = () => {
   const handleGoogleSignIn = async () => {
     try {
       await signIn();
-      // Force navigation to home as backup
+
       console.log('Sign in successful, navigating to home');
       router.replace('/');
     } catch (error) {

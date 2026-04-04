@@ -1,5 +1,3 @@
-
-
 ## Prerequisites
 
 - Node.js (v18 or higher)
@@ -36,8 +34,7 @@
    - **Web**: Press `w`
    - **Expo Go**: Scan the QR code with the Expo Go app
 
-
-Android running 
+Android running
 
 -- required android studio download an android emulator
 
@@ -52,7 +49,7 @@ EAS CLI
 
 The EAS CLI installed and logged in.
 
-npm install -g eas-cli 
+npm install -g eas-cli
 
 eas login
 
