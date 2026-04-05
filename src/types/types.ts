@@ -4,6 +4,7 @@ export interface PopularVendor {
   id: number | string;
   name: string;
   category: string;
+  location: string;
   image: ImageSourcePropType;
   rating: number;
   orders: number;

@@ -1,6 +1,6 @@
 import { Category } from '@/src/types/types';
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View, Platform } from 'react-native';
 
 type Props = {
   item: Category;
@@ -8,39 +8,44 @@ type Props = {
 
 const CategoryBadge = ({ item }: Props) => {
   return (
-    <View style={styles.categoryHolder}>
-      <View style={styles.categoryBadgeCircle}>
-        <Image
-          source={item.image}
-          style={styles.categoryBadgeImage}
-        />
-      </View>
+    <View style={styles.container}>
+      <Image source={item.image} style={styles.icon} />
       <Text style={styles.text}>{item.name}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  categoryHolder: {
+  container: {
+    flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    minHeight: 44,
+    borderRadius: 999,
+    borderWidth: 0,
     marginRight: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.12,
+    shadowRadius: 14,
+    elevation: 6
   },
-  categoryBadgeCircle: {
-    height: 60,
-    width: 60,
-    borderRadius: 100,
-    overflow: 'hidden',
-    marginBottom: 4,
-  },
-  categoryBadgeImage: {
-    height: '100%',
-    width: '100%',
-    overflow: 'hidden',
-    borderRadius: 100
+  icon: {
+    width: 22,
+    height: 22,
+    marginRight: 8,
+    borderRadius: 8,
   },
   text: {
-    fontSize: 10,
-    textAlign: 'center',
+    fontSize: 14,
+    fontWeight: '500',
+    color: '#374151',
+    fontFamily: Platform.select({
+      ios: 'AvenirNext-Regular',
+      android: 'sans-serif',
+    }),
   },
 });
 

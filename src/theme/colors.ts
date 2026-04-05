@@ -1,11 +1,11 @@
 export const COLORS = {
-  primary: '#2F7D32',
-  background: '#F7F6F2',
-  beige: '#E8D8C3',
-  border: '#E5E7EB',
-
+  primary: '#2D4635', // Dark Forest Green from mockup
+  background: '#FDF8F5', // Light cream background
+  white: '#FFFFFF',
   textPrimary: '#1F2937',
   textSecondary: '#6B7280',
-
-  white: '#FFFFFF',
+  accent: '#D4A373', // For "Top Pick" badge
+  heart: '#FF5A5F', // Favorite heart color
+  chipBackground: '#FFFFFF',
+  border: '#E5E7EB',
 };
