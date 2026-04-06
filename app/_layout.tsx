@@ -13,9 +13,9 @@ function RootLayoutNav() {
     if (isLoading) return;
 
     // Simple routing: if not authenticated and not on login page, go to login
-    if (!isAuthenticated && pathname !== '/(auth)/login') {
+    if (!isAuthenticated && pathname !== '/login') {
       console.log('🔄 Redirecting unauthenticated user to login');
-      router.replace('/(auth)/login');
+      router.replace('/login');
     }
   }, [isAuthenticated, isLoading, pathname, router]);
 

@@ -16,3 +16,12 @@ export interface Category {
   name: string;
   image: ImageSourcePropType;
 }
+
+// Auth types
+export interface GoogleAuthRequest {
+  token: string;
+}
+
+export interface AuthData {
+  isNewUser: boolean;
+}

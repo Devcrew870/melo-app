@@ -4,6 +4,7 @@ import {
   isSuccessResponse,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
+import { authApi } from './authApi';
 
 // const EXPO_CLIENT_ID =
 //   '171898382206-t6ta0os72rqpdr0okfdivfrqog4bbc1c.apps.googleusercontent.com'; // Web Application
@@ -35,8 +36,8 @@ export const signInWithGoogle = async (): Promise<UserInfo> => {
   try {
     await GoogleSignin.hasPlayServices();
     const response = await GoogleSignin.signIn();
-
     if (isSuccessResponse(response)) {
+      await authApi.verifyGoogleToken(response?.data?.idToken || "")
       console.log('✅ Google Sign-In successful:', response.data.user.email);
       return {
         user: {
