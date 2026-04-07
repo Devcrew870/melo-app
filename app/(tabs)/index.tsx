@@ -7,13 +7,15 @@ import {
   TouchableOpacity,
   FlatList,
   Platform,
+  TextInput,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Topbar from '@/src/components/layout/Topbar';
 import { categories, popularVendors } from '@/src/utils/constant';
 import PopularCard from '@/src/components/ui/PopularCard';
 import CategoryBadge from '@/src/components/ui/CategoryBadge';
-import { Ionicons } from '@expo/vector-icons';
+import Fontisto from '@expo/vector-icons/Fontisto';
+import { COLORS } from '@/src/theme/colors';
 
 export default function Home() {
   const { isAuthenticated } = useAuth();
@@ -26,38 +28,42 @@ export default function Home() {
     <View style={styles.headerWrapper}>
       <Topbar />
 
+      <View style={styles.searchBar} >
+        <TextInput style={styles.input} placeholder='Find neighor cakes, crafts or gifts......' />
+        <Fontisto name="search" size={20} color="gray" style={styles.searchIcon} />
+      </View>
+
       {/* Hero Banner */}
       <View style={styles.heroContainer}>
         <View style={styles.heroImageWrapper}>
           <ImageBackground
-            source={require('../../assets/images/categories/mehendi.jpg')}
+            source={require('../../assets/images/hero.png')}
             style={styles.heroImage}
             imageStyle={{
-              borderTopLeftRadius: 40,
-              borderTopRightRadius: 40,
+              borderRadius: 30
             }}
           >
             <View style={styles.heroOverlay}>
               <Text style={styles.heroTitle}>
                 Discover Local{'\n'}Treasures
               </Text>
-              <TouchableOpacity style={styles.heroButton}>
-                <Text style={styles.heroButtonText}>Browse Mehendi</Text>
-                <Ionicons name="chevron-forward" size={14} color="#6B7280" />
-              </TouchableOpacity>
+              <Text style={styles.heroSubTitle}>
+                Connect with the finest creators in your{'\n'}neighborhood.
+              </Text>
             </View>
           </ImageBackground>
         </View>
       </View>
 
       <View style={styles.heroSheet}>
+        <View style={styles.sectionRow}>
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Popular This Week</Text>
-          <Text style={styles.sectionSubtitle}>
-            Top picks chosen by our community
-          </Text>
+          <Text style={styles.sectionTitle}>Explore Craft</Text>
         </View>
-
+        <View>
+          <Text style={{ color: COLORS.primary, fontWeight: '500' }}>SEE ALL</Text>
+        </View>
+        </View>
         <View style={styles.categoriesContainer}>
           <FlatList
             data={categories}
@@ -113,18 +119,38 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FDF8F5',
   },
   headerWrapper: {
     width: '100%',
+  },
+  searchBar: {
+    marginBottom: 25
+  },
+  input: {
+    borderWidth: 1.5,
+    borderColor: '#b0b0b0',
+    width: '90%',
+    height: 50,
+    margin: 'auto',
+    borderRadius: 15,
+    position: 'relative',
+    fontSize: 18,
+    paddingLeft: 60,
+    fontWeight: 400
+  },
+  searchIcon: {
+    position: "absolute", 
+    left: 45, 
+    top: 15
   },
   scrollContent: {
     paddingBottom: 40,
   },
   heroContainer: {
-    width: '100%',
+    width: '90%',
     marginTop: 0,
-    height: 280,
+    height: 200,
+    margin: 'auto'
   },
   heroImageWrapper: {
     shadowColor: '#000',
@@ -144,18 +170,17 @@ const styles = StyleSheet.create({
   },
   heroOverlay: {
     padding: 26,
-    backgroundColor: 'rgba(0,0,0,0.24)',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
     flex: 1,
     justifyContent: 'center',
-    borderTopLeftRadius: 40,
-    borderTopRightRadius: 40,
+    borderRadius: 30
   },
   heroTitle: {
     fontSize: 34,
     fontWeight: '800',
     color: '#FFF',
     lineHeight: 40,
-    marginBottom: 20,
+    marginBottom: 10,
     fontFamily: Platform.select({
       ios: 'PlayfairDisplay-Bold',
       android: 'PlayfairDisplay-Bold',
@@ -173,24 +198,23 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(255,255,255,0.4)',
     marginBottom: 60,
   },
-  heroButtonText: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#FFF',
-    marginRight: 4,
-    fontFamily: Platform.select({
-      ios: 'Inter-SemiBold',
-      android: 'sans-serif-medium',
-    }),
+  heroSubTitle: {
+    color: 'white'
   },
   heroSheet: {
-    marginTop: -50,
+    marginTop: 50,
     backgroundColor: '#FFFFFF',
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
     paddingTop: 24,
     paddingBottom: 18,
     paddingHorizontal: 20,
+  },
+  sectionRow: {
+    flexDirection: 'row',
+    flex:1, 
+    justifyContent: 'space-between', 
+    alignItems: 'center',
   },
   sectionHeader: {
     paddingHorizontal: 0,

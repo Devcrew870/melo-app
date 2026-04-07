@@ -1,5 +1,5 @@
 export const COLORS = {
-  primary: '#2D4635', // Dark Forest Green from mockup
+  primary: '#2F7D32',
   background: '#FDF8F5', // Light cream background
   white: '#FFFFFF',
   textPrimary: '#1F2937',
