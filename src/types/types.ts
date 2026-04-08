@@ -1,3 +1,4 @@
+import { ComponentType } from 'react';
 import { ImageSourcePropType } from 'react-native';
 
 export interface PopularVendor {
@@ -11,10 +12,13 @@ export interface PopularVendor {
   distance: string;
 }
 
+type IconType = ComponentType<any>;
+
 export interface Category {
   id: number | string;
   name: string;
-  image: ImageSourcePropType;
+  icon: IconType;
+  iconName: string;
 }
 
 // Auth types

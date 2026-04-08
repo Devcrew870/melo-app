@@ -28,9 +28,17 @@ export default function Home() {
     <View style={styles.headerWrapper}>
       <Topbar />
 
-      <View style={styles.searchBar} >
-        <TextInput style={styles.input} placeholder='Find neighor cakes, crafts or gifts......' />
-        <Fontisto name="search" size={20} color="gray" style={styles.searchIcon} />
+      <View style={styles.searchBar}>
+        <TextInput
+          style={styles.input}
+          placeholder="Find neighor cakes, crafts or gifts......"
+        />
+        <Fontisto
+          name="search"
+          size={20}
+          color="gray"
+          style={styles.searchIcon}
+        />
       </View>
 
       {/* Hero Banner */}
@@ -40,7 +48,7 @@ export default function Home() {
             source={require('../../assets/images/hero.png')}
             style={styles.heroImage}
             imageStyle={{
-              borderRadius: 30
+              borderRadius: 30,
             }}
           >
             <View style={styles.heroOverlay}>
@@ -57,12 +65,14 @@ export default function Home() {
 
       <View style={styles.heroSheet}>
         <View style={styles.sectionRow}>
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Explore Craft</Text>
-        </View>
-        <View>
-          <Text style={{ color: COLORS.primary, fontWeight: '500' }}>SEE ALL</Text>
-        </View>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Explore Craft</Text>
+          </View>
+          <View>
+            <Text style={{ color: COLORS.primary, fontWeight: '500' }}>
+              SEE ALL
+            </Text>
+          </View>
         </View>
         <View style={styles.categoriesContainer}>
           <FlatList
@@ -124,7 +134,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   searchBar: {
-    marginBottom: 25
+    marginBottom: 25,
   },
   input: {
     borderWidth: 1.5,
@@ -136,12 +146,12 @@ const styles = StyleSheet.create({
     position: 'relative',
     fontSize: 18,
     paddingLeft: 60,
-    fontWeight: 400
+    fontWeight: 400,
   },
   searchIcon: {
-    position: "absolute", 
-    left: 45, 
-    top: 15
+    position: 'absolute',
+    left: 45,
+    top: 15,
   },
   scrollContent: {
     paddingBottom: 40,
@@ -150,7 +160,7 @@ const styles = StyleSheet.create({
     width: '90%',
     marginTop: 0,
     height: 200,
-    margin: 'auto'
+    margin: 'auto',
   },
   heroImageWrapper: {
     shadowColor: '#000',
@@ -173,7 +183,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.06)',
     flex: 1,
     justifyContent: 'center',
-    borderRadius: 30
+    borderRadius: 30,
   },
   heroTitle: {
     fontSize: 34,
@@ -199,21 +209,17 @@ const styles = StyleSheet.create({
     marginBottom: 60,
   },
   heroSubTitle: {
-    color: 'white'
+    color: 'white',
   },
   heroSheet: {
-    marginTop: 50,
-    backgroundColor: '#FFFFFF',
-    borderTopLeftRadius: 32,
-    borderTopRightRadius: 32,
     paddingTop: 24,
     paddingBottom: 18,
     paddingHorizontal: 20,
   },
   sectionRow: {
     flexDirection: 'row',
-    flex:1, 
-    justifyContent: 'space-between', 
+    flex: 1,
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   sectionHeader: {
@@ -245,6 +251,7 @@ const styles = StyleSheet.create({
   categoriesList: {
     paddingHorizontal: 5,
     paddingVertical: 8,
+    gap: 15,
   },
   cardWrapper: {
     flex: 1,

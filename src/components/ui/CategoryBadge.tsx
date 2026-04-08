@@ -1,3 +1,4 @@
+import { COLORS } from '@/src/theme/colors';
 import { Category } from '@/src/types/types';
 import React from 'react';
 import { Image, StyleSheet, Text, View, Platform } from 'react-native';
@@ -7,22 +8,30 @@ type Props = {
 };
 
 const CategoryBadge = ({ item }: Props) => {
+  const Icon = item.icon;
+
   return (
-    <View style={styles.container}>
-      <Image source={item.image} style={styles.icon} />
+    <View style={styles.mainContainer}>
+      <View style={styles.container}>
+        <Icon name={item.iconName} size={24} color={COLORS.secondary} />
+      </View>
       <Text style={styles.text}>{item.name}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    alignItems: 'center',
+  },
   container: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    minHeight: 44,
+    paddingHorizontal: 18,
+    paddingVertical: 5,
+    minHeight: 60,
+    width: 'auto',
     borderRadius: 999,
     borderWidth: 0,
     marginRight: 12,
@@ -32,16 +41,14 @@ const styles = StyleSheet.create({
     shadowRadius: 14,
     elevation: 6,
   },
-  icon: {
-    width: 22,
-    height: 22,
-    marginRight: 8,
-    borderRadius: 8,
-  },
   text: {
+    marginTop: 6,
+    marginRight: 4,
     fontSize: 14,
     fontWeight: '500',
     color: '#374151',
+    textAlign: 'center',
+    alignSelf: 'center',
     fontFamily: Platform.select({
       ios: 'AvenirNext-Regular',
       android: 'sans-serif',

@@ -37,7 +37,7 @@ export const signInWithGoogle = async (): Promise<UserInfo> => {
     await GoogleSignin.hasPlayServices();
     const response = await GoogleSignin.signIn();
     if (isSuccessResponse(response)) {
-      await authApi.verifyGoogleToken(response?.data?.idToken || "")
+      await authApi.verifyGoogleToken(response?.data?.idToken || '');
       console.log('✅ Google Sign-In successful:', response.data.user.email);
       return {
         user: {

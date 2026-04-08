@@ -1,4 +1,9 @@
-import { PopularVendor } from '../types/types';
+import { Category, PopularVendor } from '../types/types';
+import {
+  MaterialIcons,
+  FontAwesome,
+  MaterialCommunityIcons,
+} from '@expo/vector-icons';
 
 export const popularVendors: PopularVendor[] = [
   {
@@ -63,35 +68,41 @@ export const popularVendors: PopularVendor[] = [
   },
 ];
 
-export const categories = [
+export const categories: Category[] = [
   {
     id: 1,
     name: 'Cake',
-    image: require('../../assets/images/categories/cake.jpg'),
+    icon: MaterialIcons,
+    iconName: 'cake',
   },
   {
     id: 2,
-    name: 'Gift Items',
-    image: require('../../assets/images/categories/gift.jpg'),
+    name: 'Gift',
+    icon: FontAwesome,
+    iconName: 'gift',
   },
   {
     id: 3,
-    name: 'Aari Works',
-    image: require('../../assets/images/categories/aari.jpg'),
+    name: 'Aari',
+    icon: MaterialCommunityIcons,
+    iconName: 'needle',
   },
   {
     id: 4,
     name: 'Stitching',
-    image: require('../../assets/images/categories/stitching.jpg'),
+    icon: MaterialIcons,
+    iconName: 'content-cut',
   },
   {
     id: 5,
     name: 'Mehendi',
-    image: require('../../assets/images/categories/mehendi.jpg'),
+    icon: MaterialCommunityIcons,
+    iconName: 'leaf',
   },
   {
     id: 6,
-    name: 'Makeup Artists',
-    image: require('../../assets/images/categories/makeup.jpg'),
+    name: 'Makeup',
+    icon: MaterialCommunityIcons,
+    iconName: 'lipstick',
   },
 ];
