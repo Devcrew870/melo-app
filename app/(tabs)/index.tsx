@@ -9,6 +9,8 @@ import {
   FlatList,
   Platform,
   TextInput,
+  ScrollView,
+  Dimensions,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Topbar from '@/src/components/layout/Topbar';
@@ -16,8 +18,68 @@ import { categories, serviceCatalog } from '@/src/utils/constant';
 import PopularCard from '@/src/components/ui/PopularCard';
 import CategoryBadge from '@/src/components/ui/CategoryBadge';
 import Fontisto from '@expo/vector-icons/Fontisto';
+import Entypo from '@expo/vector-icons/Entypo';
 import { COLORS } from '@/src/theme/colors';
-import { Vendors } from '@/src/types/types';
+import { Vendors, ServiceCatalog } from '@/src/types/types';
+
+const { width: screenWidth } = Dimensions.get('window');
+
+const CategoryCarousel = ({ item }: { item: ServiceCatalog }) => {
+  const vendors = item.offerings[0].vendors;
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  if (vendors.length === 0) return null;
+
+  return (
+    <View style={{ marginBottom: 15 }}>
+      <FlatList
+        data={vendors}
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(vendor) => `${item.id}-${vendor.id}`}
+        onMomentumScrollEnd={(e) => {
+          const contentOffsetX = e.nativeEvent.contentOffset.x;
+          const currentIndex = Math.round(contentOffsetX / screenWidth);
+          setActiveIndex(currentIndex);
+        }}
+        renderItem={({ item: vendor }) => (
+          <View style={{ width: screenWidth, alignItems: 'center' }}>
+            <View style={[styles.cardWrapper, { width: '90%' }]}>
+              <PopularCard item={vendor} />
+            </View>
+          </View>
+        )}
+      />
+      {vendors.length > 1 && (
+        <View style={{
+          position: 'absolute',
+          top: 30,
+          right: 35,
+          flexDirection: 'row',
+          alignItems: 'center',
+          backgroundColor: 'rgba(0,0,0,0.4)',
+          paddingHorizontal: 8,
+          paddingVertical: 5,
+          borderRadius: 12,
+          gap: 6
+        }}>
+          {vendors.map((_, idx) => (
+            <View
+              key={idx}
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: 3,
+                backgroundColor: idx === activeIndex ? '#22C55E' : 'rgba(255,255,255,0.5)',
+              }}
+            />
+          ))}
+        </View>
+      )}
+    </View>
+  );
+};
 
 export default function Home() {
   const { isAuthenticated } = useAuth();
@@ -140,15 +202,7 @@ export default function Home() {
     <SafeAreaView style={styles.container}>
       <FlatList
         data={filteredServiceCatalog}
-        renderItem={({ item }) => (
-          <>
-            {item.offerings[0].vendors.map(vendor => (
-              <View style={styles.cardWrapper} key={`${item.id}-${vendor.id}`}>
-                <PopularCard item={vendor} />
-              </View>
-            ))}
-          </>
-        )}
+        renderItem={({ item }) => <CategoryCarousel item={item} />}
         keyExtractor={item => item.id.toString()}
         ListHeaderComponent={renderHeader}
         showsVerticalScrollIndicator={false}

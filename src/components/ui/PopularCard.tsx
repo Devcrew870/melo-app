@@ -106,7 +106,8 @@ const PopularCard = ({ item, onPress, badgeText }: Props) => {
               }}
             >
               <MaterialIcons name="message" size={24} color="white" />
-              <Text style={{ color: 'white', fontSize: 16 }}>Whatsapp</Text>
+              {/* <MaterialIcons name="details" size={24} color="white" /> */}
+              <Text style={{ color: 'white', fontSize: 16 }}>View Details</Text>
             </TouchableOpacity>
           </View>
           <View
