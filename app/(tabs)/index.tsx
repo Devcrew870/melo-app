@@ -1,4 +1,5 @@
 import { useAuth } from '../../src/contexts/AuthContext';
+import React, { useMemo, useState } from 'react';
 import {
   Text,
   View,
@@ -11,14 +12,46 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Topbar from '@/src/components/layout/Topbar';
-import { categories, popularVendors } from '@/src/utils/constant';
+import { categories, serviceCatalog } from '@/src/utils/constant';
 import PopularCard from '@/src/components/ui/PopularCard';
 import CategoryBadge from '@/src/components/ui/CategoryBadge';
 import Fontisto from '@expo/vector-icons/Fontisto';
 import { COLORS } from '@/src/theme/colors';
+import { Vendors } from '@/src/types/types';
 
 export default function Home() {
   const { isAuthenticated } = useAuth();
+  const [searchTerm, setSearchTerm] = useState('');
+  const trimmedSearchTerm = searchTerm.trim();
+
+  const filteredServiceCatalog = useMemo(() => {
+    const query = trimmedSearchTerm.toLowerCase();
+    if (!trimmedSearchTerm) {
+      return serviceCatalog;
+    }
+
+    return serviceCatalog
+      .map(section => ({
+        ...section,
+        offerings: section.offerings
+          .map(offering => ({
+            ...offering,
+            vendors: offering.vendors.filter(vendor => {
+              const searchableFields = [
+                vendor.vendorName,
+                vendor.productName,
+                vendor.description,
+                vendor.location?.address,
+              ];
+              return searchableFields.some(field =>
+                field?.toLowerCase().includes(query),
+              );
+            }),
+          }))
+          .filter(offering => offering.vendors.length > 0),
+      }))
+      .filter(section => section.offerings.length > 0);
+  }, [trimmedSearchTerm]);
 
   if (!isAuthenticated) {
     return null;
@@ -29,16 +62,22 @@ export default function Home() {
       <Topbar />
 
       <View style={styles.searchBar}>
-        <TextInput
-          style={styles.input}
-          placeholder="Find neighor cakes, crafts or gifts......"
-        />
-        <Fontisto
-          name="search"
-          size={20}
-          color="gray"
-          style={styles.searchIcon}
-        />
+        <View style={styles.searchInputWrapper}>
+          <TextInput
+            style={styles.input}
+            placeholder="Find neighbor cakes, crafts, or gifts..."
+            placeholderTextColor="#9CA3AF"
+            value={searchTerm}
+            onChangeText={setSearchTerm}
+          />
+          <Fontisto
+            name="search"
+            size={20}
+            color="#6B7280"
+            style={styles.searchIcon}
+            pointerEvents="none"
+          />
+        </View>
       </View>
 
       {/* Hero Banner */}
@@ -85,41 +124,43 @@ export default function Home() {
           />
         </View>
       </View>
+
+      <View style={styles.body}>
+        <Text style={styles.sectionTitle}>Curated for You</Text>
+        <View>
+          <View />
+          <View />
+          <View />
+        </View>
+      </View>
     </View>
   );
 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={popularVendors}
-        renderItem={({ item, index }) => (
-          <View
-            style={[
-              styles.cardWrapper,
-              {
-                marginLeft: index % 2 === 0 ? 20 : 10,
-                marginRight: index % 2 === 0 ? 10 : 20,
-              },
-            ]}
-          >
-            <PopularCard
-              item={item}
-              badgeText={
-                index === 0
-                  ? 'Popular'
-                  : index === 2
-                    ? 'Top Pick'
-                    : index === 4
-                      ? 'New'
-                      : undefined
-              }
-            />
-          </View>
+        data={filteredServiceCatalog}
+        renderItem={({ item }) => (
+          <>
+            {item.offerings[0].vendors.map(vendor => (
+              <View style={styles.cardWrapper} key={`${item.id}-${vendor.id}`}>
+                <PopularCard item={vendor} />
+              </View>
+            ))}
+          </>
         )}
         keyExtractor={item => item.id.toString()}
-        numColumns={2}
         ListHeaderComponent={renderHeader}
         showsVerticalScrollIndicator={false}
+        ListEmptyComponent={() => (
+          <View style={styles.emptyResult}>
+            <Text style={styles.emptyText}>
+              {trimmedSearchTerm
+                ? `No vendors match “${trimmedSearchTerm}”.`
+                : 'No vendors available right now.'}
+            </Text>
+          </View>
+        )}
         contentContainerStyle={styles.scrollContent}
       />
     </SafeAreaView>
@@ -135,23 +176,39 @@ const styles = StyleSheet.create({
   },
   searchBar: {
     marginBottom: 25,
+    overflow: 'hidden',
+    alignItems: 'center',
+  },
+  searchInputWrapper: {
+    width: '90%',
+    position: 'relative',
   },
   input: {
     borderWidth: 1.5,
     borderColor: '#b0b0b0',
-    width: '90%',
-    height: 50,
-    margin: 'auto',
+    width: '100%',
+    height: 52,
     borderRadius: 15,
-    position: 'relative',
-    fontSize: 18,
-    paddingLeft: 60,
-    fontWeight: 400,
+    fontSize: 16,
+    paddingLeft: 45,
+    paddingRight: 16,
+    fontWeight: '400',
+    backgroundColor: COLORS.white,
+    color: COLORS.textPrimary,
   },
   searchIcon: {
     position: 'absolute',
-    left: 45,
-    top: 15,
+    left: 16,
+    top: 16,
+    zIndex: 1,
+  },
+  emptyResult: {
+    paddingVertical: 40,
+    alignItems: 'center',
+  },
+  emptyText: {
+    color: '#6B7280',
+    fontSize: 16,
   },
   scrollContent: {
     paddingBottom: 40,
@@ -254,6 +311,13 @@ const styles = StyleSheet.create({
     gap: 15,
   },
   cardWrapper: {
-    flex: 1,
+    width: '90%',
+    alignSelf: 'center',
+    marginVertical: 12,
+  },
+  body: {
+    width: '90%',
+    margin: 'auto',
+    marginBottom: 15,
   },
 });

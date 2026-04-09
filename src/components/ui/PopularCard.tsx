@@ -4,85 +4,134 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
   Platform,
+  TouchableOpacity,
 } from 'react-native';
-import { PopularVendor } from '@/src/types/types';
-import { Ionicons } from '@expo/vector-icons';
+import { ServiceCatalog, Vendors } from '@/src/types/types';
+import EvilIcons from '@expo/vector-icons/EvilIcons';
 import Fontisto from '@expo/vector-icons/Fontisto';
+import { COLORS } from '@/src/theme/colors';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 type Props = {
-  item: PopularVendor;
+  item: Vendors;
   onPress?: () => void;
   badgeText?: string;
 };
 
 const PopularCard = ({ item, onPress, badgeText }: Props) => {
-  const badgeStyle = () => {
-    switch (badgeText) {
-      case 'Popular':
-        return styles.badgePopular;
-      case 'Top Pick':
-        return styles.badgeTopPick;
-      case 'New':
-        return styles.badgeNew;
-      default:
-        return styles.badgeDefault;
-    }
-  };
-
-  const badgeTextColor = badgeText === 'Top Pick' ? '#111' : '#fff';
-
   return (
-    <TouchableOpacity style={styles.card} activeOpacity={0.9} onPress={onPress}>
+    <View style={styles.card}>
       <View style={styles.imageContainer}>
-        <Image style={styles.image} source={item.image} />
-        <View style={styles.overlay} />
+        <Image
+          style={styles.image}
+          source={{ uri: item.image}}
+        />
+        {/* <View style={styles.overlay} /> */}
 
-        {/* Badge */}
-        {badgeText && (
-          <View style={[styles.badge, badgeStyle()]}>
-            <Text style={[styles.badgeText, { color: badgeTextColor }]}>
-              {' '}
-              {badgeText}{' '}
+      </View>
+      <View style={{ marginTop: 10, padding: 10 }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <View>
+            <Text numberOfLines={1} style={styles.title}>
+              {item.productName}
             </Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 15, paddingHorizontal: 10 }}>
+            <View style={styles.infoRow}>
+              <Fontisto
+                name="shopping-store"
+                size={10}
+                color={COLORS.primary}
+              />
+              <Text numberOfLines={1} style={styles.infoText}>
+                {item.vendorName}
+              </Text>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <EvilIcons name="location" size={18} color="gray" />
+              <Text style={{ fontSize: 10, color: 'gray', fontStyle: 'italic' }}>
+                {item.location?.address || ""}
+              </Text>
+            </View>
+            </View>
           </View>
-        )}
-
-        {/* Favorite Icon */}
-        <TouchableOpacity style={styles.favoriteBtn}>
-          <Ionicons name="heart" size={16} color="#FF5A5F" />
-        </TouchableOpacity>
-
-        {/* Text Content */}
-        <View style={styles.textOverlay}>
-          <Text numberOfLines={1} style={styles.title}>
-            {item.category}
-          </Text>
-
-          <View style={styles.infoRow}>
-            <Fontisto name="shopping-store" size={10} color="#fff" />
-            <Text numberOfLines={1} style={styles.infoText}>
-              {item.name}
+          <View style={{ flexDirection: 'column', columnGap: 10 }}>
+            <Text style={styles.price}>
+              ${item.price}
             </Text>
-          </View>
-
-          <View style={styles.infoRow}>
-            <Ionicons name="location-sharp" size={10} color="#fff" />
-            <Text numberOfLines={1} style={styles.infoText}>
-              {item.location}
+            <Text
+              style={{
+                textTransform: 'uppercase',
+                fontSize: 12,
+                color: 'gray',
+                fontWeight: '500',
+              }}
+            >
+              Starts At
             </Text>
           </View>
         </View>
+
+        <View
+          style={{
+            marginTop: 5,
+            padding: 10,
+          }}
+        >
+          <Text
+            style={{ color: 'gray', fontStyle: 'italic' }}
+          >{`${'"'}${item.description}.${'"'}`}</Text>
+        </View>
+
+        <View style={{ padding: 10, flexDirection: 'row', gap: 10, alignItems: 'center', justifyContent: 'space-between' }}>
+          <View>
+            <TouchableOpacity
+              style={{
+                height: 50,
+                backgroundColor: COLORS.primary,
+                width: '100%',
+                flexDirection: 'row',
+                paddingHorizontal: 40,
+                paddingVertical: 10,
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 8,
+                borderRadius: 15
+              }}
+            >
+              <MaterialIcons name="message" size={24} color="white" />
+              <Text style={{ color: 'white', fontSize: 16 }}>Whatsapp</Text>
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              height: 50,
+              width: 50,
+              borderWidth: 1,
+              borderColor: 'gray',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 10,
+            }}
+          >
+            <EvilIcons name="heart" size={30} color="black" />
+          </View>
+        </View>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    height: 180,
+    height: 700,
     borderRadius: 28,
     overflow: 'hidden',
     marginBottom: 16,
@@ -90,7 +139,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: '100%',
-    height: '100%',
+    height: '70%',
     position: 'relative',
   },
   image: {
@@ -154,31 +203,29 @@ const styles = StyleSheet.create({
     right: 16,
   },
   title: {
-    color: '#fff',
-    fontSize: 18,
+    color: '#000000',
+    fontSize: 20,
     fontWeight: '700',
-    marginBottom: 6,
-    textShadowColor: 'rgba(0, 0, 0, 0.35)',
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 4,
+    paddingHorizontal: 10,
     fontFamily: Platform.select({
       ios: 'Inter-SemiBold',
       android: 'sans-serif-medium',
     }),
   },
+  price: {
+    fontWeight: '600',
+    fontSize: 18,
+    paddingHorizontal: 10
+  },
   infoRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 4,
   },
   infoText: {
-    color: '#fff',
+    color: COLORS.primary,
     fontSize: 11,
     marginLeft: 6,
     fontWeight: '500',
-    textShadowColor: 'rgba(0, 0, 0, 0.25)',
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 4,
     fontFamily: Platform.select({
       ios: 'Inter',
       android: 'sans-serif',

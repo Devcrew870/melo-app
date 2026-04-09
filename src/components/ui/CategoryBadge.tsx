@@ -1,7 +1,7 @@
 import { COLORS } from '@/src/theme/colors';
 import { Category } from '@/src/types/types';
 import React from 'react';
-import { Image, StyleSheet, Text, View, Platform } from 'react-native';
+import { StyleSheet, Text, View, Platform } from 'react-native';
 
 type Props = {
   item: Category;
