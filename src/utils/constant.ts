@@ -1,4 +1,9 @@
-import { Category, PopularVendor, ServiceCatalog } from '../types/types';
+import {
+  AllCategories,
+  Category,
+  PopularVendor,
+  ServiceCatalog,
+} from '../types/types';
 import {
   MaterialIcons,
   FontAwesome,
@@ -110,40 +115,43 @@ export const categories: Category[] = [
 export const serviceCatalog: ServiceCatalog[] = [
   {
     id: 1,
-    categoryName: "Cake",
+    categoryName: 'Cake',
     icon: MaterialIcons,
-    iconName: "cake",
+    iconName: 'cake',
     offerings: [
       {
         id: 1,
-        serviceName: "Birthday Cake",
+        serviceName: 'Birthday Cake',
         vendors: [
           {
             id: 1,
-            vendorName: "Sweet Bakes",
-            productName: "Chocolate Truffle Cake",
-            description: "Rich chocolate layered cake with creamy frosting",
-            image: "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmlydGhkYXklMjBjYWtlfGVufDB8fDB8fHww",
+            vendorName: 'Sweet Bakes',
+            productName: 'Chocolate Truffle Cake',
+            description: 'Rich chocolate layered cake with creamy frosting',
+            image:
+              'https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmlydGhkYXklMjBjYWtlfGVufDB8fDB8fHww',
             price: 500,
-            location: { address: "Nagercoil", lat: 8.1833, lng: 77.4119 },
+            location: { address: 'Nagercoil', lat: 8.1833, lng: 77.4119 },
           },
           {
             id: 2,
-            vendorName: "Cake World",
-            productName: "Strawberry Cream Cake",
-            description: "Fresh strawberry cake with soft sponge layers",
-            image: "https://images.unsplash.com/photo-1635337795190-b9a0ef615395?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c3RyYXdiZXJyeSUyMGNyZWFtJTIwY2FrZXxlbnwwfHwwfHx8MA%3D%3D",
+            vendorName: 'Cake World',
+            productName: 'Strawberry Cream Cake',
+            description: 'Fresh strawberry cake with soft sponge layers',
+            image:
+              'https://images.unsplash.com/photo-1635337795190-b9a0ef615395?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c3RyYXdiZXJyeSUyMGNyZWFtJTIwY2FrZXxlbnwwfHwwfHx8MA%3D%3D',
             price: 550,
-            location: { address: "Marthandam", lat: 8.3127, lng: 77.2222 },
+            location: { address: 'Marthandam', lat: 8.3127, lng: 77.2222 },
           },
           {
             id: 3,
-            vendorName: "Delight Cakes",
-            productName: "Vanilla Delight Cake",
-            description: "Classic vanilla cake with smooth buttercream",
-            image: "https://images.unsplash.com/photo-1695649912819-67853082a240?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGRlbGlnaHQlMjBjYWtlfGVufDB8fDB8fHww",
+            vendorName: 'Delight Cakes',
+            productName: 'Vanilla Delight Cake',
+            description: 'Classic vanilla cake with smooth buttercream',
+            image:
+              'https://images.unsplash.com/photo-1695649912819-67853082a240?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGRlbGlnaHQlMjBjYWtlfGVufDB8fDB8fHww',
             price: 600,
-            location: { address: "Thuckalay", lat: 8.24, lng: 77.3 },
+            location: { address: 'Thuckalay', lat: 8.24, lng: 77.3 },
           },
         ],
       },
@@ -152,40 +160,43 @@ export const serviceCatalog: ServiceCatalog[] = [
 
   {
     id: 2,
-    categoryName: "Gift Items",
+    categoryName: 'Gift Items',
     icon: FontAwesome,
-    iconName: "gift",
+    iconName: 'gift',
     offerings: [
       {
         id: 1,
-        serviceName: "Gift Combo",
+        serviceName: 'Gift Combo',
         vendors: [
           {
             id: 1,
-            vendorName: "Surprise Store",
-            productName: "Birthday Gift Box Combo",
-            description: "Includes chocolates, teddy and greeting card",
-            image: "https://images.unsplash.com/photo-1557471311-da136cd4fb86?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDd8fGdpZnR8ZW58MHx8MHx8fDA%3D",
+            vendorName: 'Surprise Store',
+            productName: 'Birthday Gift Box Combo',
+            description: 'Includes chocolates, teddy and greeting card',
+            image:
+              'https://images.unsplash.com/photo-1557471311-da136cd4fb86?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDd8fGdpZnR8ZW58MHx8MHx8fDA%3D',
             price: 700,
-            location: { address: "Nagercoil", lat: 8.1833, lng: 77.4119 },
+            location: { address: 'Nagercoil', lat: 8.1833, lng: 77.4119 },
           },
           {
             id: 2,
-            vendorName: "Gift Hub",
-            productName: "Flower & Chocolate Combo",
-            description: "Fresh flowers paired with premium chocolates",
-            image: "https://images.unsplash.com/photo-1769738135915-7a317e95b609?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGZsb3dlciUyMGFuZCUyMGNob2NvbGF0ZSUyMGdpZnR8ZW58MHx8MHx8fDA%3D",
+            vendorName: 'Gift Hub',
+            productName: 'Flower & Chocolate Combo',
+            description: 'Fresh flowers paired with premium chocolates',
+            image:
+              'https://images.unsplash.com/photo-1769738135915-7a317e95b609?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGZsb3dlciUyMGFuZCUyMGNob2NvbGF0ZSUyMGdpZnR8ZW58MHx8MHx8fDA%3D',
             price: 650,
-            location: { address: "Marthandam", lat: 8.3127, lng: 77.2222 },
+            location: { address: 'Marthandam', lat: 8.3127, lng: 77.2222 },
           },
           {
             id: 3,
-            vendorName: "Happy Box",
-            productName: "Surprise Gift Basket",
-            description: "Curated basket with snacks and goodies",
-            image: "https://images.unsplash.com/photo-1773450970959-cef81e9b1053?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGdpZnQlMjBiYXNrZXR8ZW58MHx8MHx8fDA%3D",
+            vendorName: 'Happy Box',
+            productName: 'Surprise Gift Basket',
+            description: 'Curated basket with snacks and goodies',
+            image:
+              'https://images.unsplash.com/photo-1773450970959-cef81e9b1053?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGdpZnQlMjBiYXNrZXR8ZW58MHx8MHx8fDA%3D',
             price: 800,
-            location: { address: "Thuckalay", lat: 8.24, lng: 77.3 },
+            location: { address: 'Thuckalay', lat: 8.24, lng: 77.3 },
           },
         ],
       },
@@ -194,40 +205,43 @@ export const serviceCatalog: ServiceCatalog[] = [
 
   {
     id: 3,
-    categoryName: "Aari Works",
+    categoryName: 'Aari Works',
     icon: MaterialCommunityIcons,
-    iconName: "needle",
+    iconName: 'needle',
     offerings: [
       {
         id: 1,
-        serviceName: "Blouse Aari Work",
+        serviceName: 'Blouse Aari Work',
         vendors: [
           {
             id: 1,
-            vendorName: "Aari Studio",
-            productName: "Bridal Aari Blouse Design",
-            description: "Intricate bridal embroidery with premium threads",
-            image: "https://images.unsplash.com/photo-1666592943709-8ed3a0729e60?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODR8fGJyaWRhbCUyMGJsb3VzZXxlbnwwfHwwfHx8MA%3D%3D",
+            vendorName: 'Aari Studio',
+            productName: 'Bridal Aari Blouse Design',
+            description: 'Intricate bridal embroidery with premium threads',
+            image:
+              'https://images.unsplash.com/photo-1666592943709-8ed3a0729e60?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODR8fGJyaWRhbCUyMGJsb3VzZXxlbnwwfHwwfHx8MA%3D%3D',
             price: 1500,
-            location: { address: "Nagercoil", lat: 8.1833, lng: 77.4119 },
+            location: { address: 'Nagercoil', lat: 8.1833, lng: 77.4119 },
           },
           {
             id: 2,
-            vendorName: "Thread Art",
-            productName: "Designer Embroidery Blouse",
-            description: "Modern embroidery patterns with fine detailing",
-            image: "https://images.unsplash.com/photo-1724856605022-106d6dd6e842?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YnJpZGFsJTIwYmxvdXNlJTIwdGhyZWFkJTIwYXJ0fGVufDB8fDB8fHww",
+            vendorName: 'Thread Art',
+            productName: 'Designer Embroidery Blouse',
+            description: 'Modern embroidery patterns with fine detailing',
+            image:
+              'https://images.unsplash.com/photo-1724856605022-106d6dd6e842?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YnJpZGFsJTIwYmxvdXNlJTIwdGhyZWFkJTIwYXJ0fGVufDB8fDB8fHww',
             price: 1700,
-            location: { address: "Marthandam", lat: 8.3127, lng: 77.2222 },
+            location: { address: 'Marthandam', lat: 8.3127, lng: 77.2222 },
           },
           {
             id: 3,
-            vendorName: "Design Hub",
-            productName: "Custom Aari Work Blouse",
-            description: "Customized embroidery tailored to your style",
-            image: "https://images.unsplash.com/photo-1753357748082-d6cd567b9bfd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzd8fGN1c3RvbWJyaWRhbCUyMGJsb3VzZSUyMHRocmVhZCUyMGFydHxlbnwwfHwwfHx8MA%3D%3D",
+            vendorName: 'Design Hub',
+            productName: 'Custom Aari Work Blouse',
+            description: 'Customized embroidery tailored to your style',
+            image:
+              'https://images.unsplash.com/photo-1753357748082-d6cd567b9bfd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzd8fGN1c3RvbWJyaWRhbCUyMGJsb3VzZSUyMHRocmVhZCUyMGFydHxlbnwwfHwwfHx8MA%3D%3D',
             price: 1800,
-            location: { address: "Thuckalay", lat: 8.24, lng: 77.3 },
+            location: { address: 'Thuckalay', lat: 8.24, lng: 77.3 },
           },
         ],
       },
@@ -236,40 +250,43 @@ export const serviceCatalog: ServiceCatalog[] = [
 
   {
     id: 4,
-    categoryName: "Stitching",
+    categoryName: 'Stitching',
     icon: MaterialIcons,
-    iconName: "content-cut",
+    iconName: 'content-cut',
     offerings: [
       {
         id: 1,
-        serviceName: "Blouse Stitching",
+        serviceName: 'Blouse Stitching',
         vendors: [
           {
             id: 1,
-            vendorName: "Perfect Stitch",
-            productName: "Custom Fit Blouse",
-            description: "Perfect fitting blouse tailored to measurements",
-            image: "https://images.unsplash.com/photo-1550951195-2cbd9ca5e0d5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmxvdXNlJTIwc3RpdGNoaW5nfGVufDB8fDB8fHww",
+            vendorName: 'Perfect Stitch',
+            productName: 'Custom Fit Blouse',
+            description: 'Perfect fitting blouse tailored to measurements',
+            image:
+              'https://images.unsplash.com/photo-1550951195-2cbd9ca5e0d5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmxvdXNlJTIwc3RpdGNoaW5nfGVufDB8fDB8fHww',
             price: 400,
-            location: { address: "Nagercoil", lat: 8.1833, lng: 77.4119 },
+            location: { address: 'Nagercoil', lat: 8.1833, lng: 77.4119 },
           },
           {
             id: 2,
-            vendorName: "Tailor Point",
-            productName: "Designer Blouse Stitching",
-            description: "Stylish blouse stitching with modern cuts",
-            image: "https://images.unsplash.com/photo-1616756141603-6d37d5cde2a2?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            vendorName: 'Tailor Point',
+            productName: 'Designer Blouse Stitching',
+            description: 'Stylish blouse stitching with modern cuts',
+            image:
+              'https://images.unsplash.com/photo-1616756141603-6d37d5cde2a2?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             price: 450,
-            location: { address: "Marthandam", lat: 8.3127, lng: 77.2222 },
+            location: { address: 'Marthandam', lat: 8.3127, lng: 77.2222 },
           },
           {
             id: 3,
-            vendorName: "Fit Studio",
-            productName: "Premium Stitch Blouse",
-            description: "High-quality stitching with premium finish",
-            image: "https://media.istockphoto.com/id/2244895016/photo/traditional-embroidered-kebaya-blouse-on-mannequin.webp?a=1&b=1&s=612x612&w=0&k=20&c=aWxYunE4ARpwKPLDWyKX-L1ZRtUi8lMC7UCX8oPXVCY=",
+            vendorName: 'Fit Studio',
+            productName: 'Premium Stitch Blouse',
+            description: 'High-quality stitching with premium finish',
+            image:
+              'https://media.istockphoto.com/id/2244895016/photo/traditional-embroidered-kebaya-blouse-on-mannequin.webp?a=1&b=1&s=612x612&w=0&k=20&c=aWxYunE4ARpwKPLDWyKX-L1ZRtUi8lMC7UCX8oPXVCY=',
             price: 500,
-            location: { address: "Thuckalay", lat: 8.24, lng: 77.3 },
+            location: { address: 'Thuckalay', lat: 8.24, lng: 77.3 },
           },
         ],
       },
@@ -278,40 +295,43 @@ export const serviceCatalog: ServiceCatalog[] = [
 
   {
     id: 5,
-    categoryName: "Mehendi",
+    categoryName: 'Mehendi',
     icon: MaterialCommunityIcons,
-    iconName: "leaf",
+    iconName: 'leaf',
     offerings: [
       {
         id: 1,
-        serviceName: "Bridal Mehendi",
+        serviceName: 'Bridal Mehendi',
         vendors: [
           {
             id: 1,
-            vendorName: "Henna Art",
-            productName: "Full Hand Bridal Mehendi",
-            description: "Detailed bridal mehendi covering full hands",
-            image: "https://images.unsplash.com/photo-1613665667184-81bb9b8605e2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJyaWRhbCUyMG1laGVuZGl8ZW58MHx8MHx8fDA%3D",
+            vendorName: 'Henna Art',
+            productName: 'Full Hand Bridal Mehendi',
+            description: 'Detailed bridal mehendi covering full hands',
+            image:
+              'https://images.unsplash.com/photo-1613665667184-81bb9b8605e2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJyaWRhbCUyMG1laGVuZGl8ZW58MHx8MHx8fDA%3D',
             price: 3000,
-            location: { address: "Nagercoil", lat: 8.1833, lng: 77.4119 },
+            location: { address: 'Nagercoil', lat: 8.1833, lng: 77.4119 },
           },
           {
             id: 2,
-            vendorName: "Mehendi Studio",
-            productName: "Traditional Bridal Design",
-            description: "Classic mehendi patterns with fine detailing",
-            image: "https://images.unsplash.com/photo-1752824250542-d4db51baa32c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dHJhZGl0aW9uYSUyMG1laGVuZGl8ZW58MHx8MHx8fDA%3D",
+            vendorName: 'Mehendi Studio',
+            productName: 'Traditional Bridal Design',
+            description: 'Classic mehendi patterns with fine detailing',
+            image:
+              'https://images.unsplash.com/photo-1752824250542-d4db51baa32c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dHJhZGl0aW9uYSUyMG1laGVuZGl8ZW58MHx8MHx8fDA%3D',
             price: 2800,
-            location: { address: "Marthandam", lat: 8.3127, lng: 77.2222 },
+            location: { address: 'Marthandam', lat: 8.3127, lng: 77.2222 },
           },
           {
             id: 3,
-            vendorName: "Royal Henna",
-            productName: "Premium Mehendi Package",
-            description: "Luxury mehendi designs for special occasions",
-            image: "https://images.unsplash.com/photo-1624504761718-be4d634f4624?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWVoZW5kaXxlbnwwfHwwfHx8MA%3D%3D",
+            vendorName: 'Royal Henna',
+            productName: 'Premium Mehendi Package',
+            description: 'Luxury mehendi designs for special occasions',
+            image:
+              'https://images.unsplash.com/photo-1624504761718-be4d634f4624?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWVoZW5kaXxlbnwwfHwwfHx8MA%3D%3D',
             price: 3200,
-            location: { address: "Thuckalay", lat: 8.24, lng: 77.3 },
+            location: { address: 'Thuckalay', lat: 8.24, lng: 77.3 },
           },
         ],
       },
@@ -320,43 +340,97 @@ export const serviceCatalog: ServiceCatalog[] = [
 
   {
     id: 6,
-    categoryName: "Makeup Artists",
+    categoryName: 'Makeup Artists',
     icon: MaterialCommunityIcons,
-    iconName: "lipstick",
+    iconName: 'lipstick',
     offerings: [
       {
         id: 1,
-        serviceName: "Bridal Makeup",
+        serviceName: 'Bridal Makeup',
         vendors: [
           {
             id: 1,
-            vendorName: "Glam Studio",
-            productName: "HD Bridal Makeup",
-            description: "High-definition makeup for flawless bridal look",
-            image: "https://images.unsplash.com/photo-1710494422513-84f510745792?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGhkJTIwYnJpZGFsJTIwbWFrZXVwfGVufDB8fDB8fHww",
+            vendorName: 'Glam Studio',
+            productName: 'HD Bridal Makeup',
+            description: 'High-definition makeup for flawless bridal look',
+            image:
+              'https://images.unsplash.com/photo-1710494422513-84f510745792?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGhkJTIwYnJpZGFsJTIwbWFrZXVwfGVufDB8fDB8fHww',
             price: 8000,
-            location: { address: "Nagercoil", lat: 8.1833, lng: 77.4119 },
+            location: { address: 'Nagercoil', lat: 8.1833, lng: 77.4119 },
           },
           {
             id: 2,
-            vendorName: "Beauty Hub",
-            productName: "Airbrush Makeup",
-            description: "Smooth airbrush finish for long-lasting look",
-            image: "https://images.unsplash.com/photo-1733244739018-e2d136ec4b36?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGFpcmJydXNoJTIwbWFrZXVwfGVufDB8fDB8fHww",
+            vendorName: 'Beauty Hub',
+            productName: 'Airbrush Makeup',
+            description: 'Smooth airbrush finish for long-lasting look',
+            image:
+              'https://images.unsplash.com/photo-1733244739018-e2d136ec4b36?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGFpcmJydXNoJTIwbWFrZXVwfGVufDB8fDB8fHww',
             price: 7500,
-            location: { address: "Marthandam", lat: 8.3127, lng: 77.2222 },
+            location: { address: 'Marthandam', lat: 8.3127, lng: 77.2222 },
           },
           {
             id: 3,
-            vendorName: "Bridal Touch",
-            productName: "Premium Bridal Package",
-            description: "Complete bridal package with styling and makeup",
-            image: "https://images.unsplash.com/photo-1747847471517-952a3eb93a89?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJlbWl1bSUyMGJyaWRhbCUyMG1ha2V1cHxlbnwwfHwwfHx8MA%3D%3D",
+            vendorName: 'Bridal Touch',
+            productName: 'Premium Bridal Package',
+            description: 'Complete bridal package with styling and makeup',
+            image:
+              'https://images.unsplash.com/photo-1747847471517-952a3eb93a89?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJlbWl1bSUyMGJyaWRhbCUyMG1ha2V1cHxlbnwwfHwwfHx8MA%3D%3D',
             price: 8200,
-            location: { address: "Thuckalay", lat: 8.24, lng: 77.3 },
+            location: { address: 'Thuckalay', lat: 8.24, lng: 77.3 },
           },
         ],
       },
     ],
+  },
+];
+
+export const allCategories: AllCategories[] = [
+  {
+    id: 1,
+    title: 'Cakes',
+    description: 'Freshly baked, custom designs',
+    vendors: 12,
+    image:
+      'https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmlydGhkYXklMjBjYWtlfGVufDB8fDB8fHww',
+  },
+  {
+    id: 2,
+    title: 'Mehendi',
+    description: 'Traditional and modern henna art',
+    vendors: 8,
+    image:
+      'https://images.unsplash.com/photo-1624504761718-be4d634f4624?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWVoZW5kaXxlbnwwfHwwfHx8MA%3D%3D',
+  },
+  {
+    id: 3,
+    title: 'Aari Works',
+    description: 'Intricate hand embroidery',
+    vendors: 15,
+    image:
+      'https://images.unsplash.com/photo-1753357748082-d6cd567b9bfd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzd8fGN1c3RvbWJyaWRhbCUyMGJsb3VzZSUyMHRocmVhZCUyMGFydHxlbnwwfHwwfHx8MA%3D%3D',
+  },
+  {
+    id: 4,
+    title: 'Stitching',
+    description: 'Custom tailoring and repairs',
+    vendors: 20,
+    image:
+      'https://media.istockphoto.com/id/2244895016/photo/traditional-embroidered-kebaya-blouse-on-mannequin.webp?a=1&b=1&s=612x612&w=0&k=20&c=aWxYunE4ARpwKPLDWyKX-L1ZRtUi8lMC7UCX8oPXVCY=',
+  },
+  {
+    id: 5,
+    title: 'Gift Items',
+    description: 'Handcrafted personalized gifts',
+    vendors: 30,
+    image:
+      'https://images.unsplash.com/photo-1557471311-da136cd4fb86?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDd8fGdpZnR8ZW58MHx8MHx8fDA%3D',
+  },
+  {
+    id: 6,
+    title: 'Makeup Artists',
+    description: 'Bridal and party makeup',
+    vendors: 10,
+    image:
+      'https://images.unsplash.com/photo-1710494422513-84f510745792?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGhkJTIwYnJpZGFsJTIwbWFrZXVwfGVufDB8fDB8fHww',
   },
 ];

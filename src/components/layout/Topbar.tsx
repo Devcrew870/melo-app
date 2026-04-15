@@ -1,17 +1,35 @@
 import { useAuth } from '@/src/contexts/AuthContext';
-import React, { useEffect } from 'react';
+import { COLORS } from '@/src/theme/colors';
+import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 
-const Topbar = () => {
+type Props = {
+  title: string;
+};
+
+const Topbar = ({ title }: Props) => {
   const { user } = useAuth();
 
   return (
     <View style={styles.container}>
       <View>
-        <Image
-          source={require('../../../assets/images/logo.png')}
-          style={styles.logo}
-        />
+        {title ? (
+          <Text
+            style={{
+              color: COLORS.primary,
+              fontSize: 22,
+              fontWeight: 600,
+              marginLeft: 10,
+            }}
+          >
+            Explore {title}
+          </Text>
+        ) : (
+          <Image
+            source={require('../../../assets/images/logo.png')}
+            style={styles.logo}
+          />
+        )}
       </View>
       <View style={styles.profileContainer}>
         <View style={styles.profileCircle}>

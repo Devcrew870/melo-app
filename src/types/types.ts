@@ -24,15 +24,15 @@ export type Vendors = {
   location: {
     address: string;
     lat: number;
-    lng: number
-  }
-}
+    lng: number;
+  };
+};
 
 type Offerings = {
   id: number | string;
   serviceName: string;
-  vendors: Vendors[]
-}
+  vendors: Vendors[];
+};
 
 export interface Category {
   id: number | string;
@@ -42,11 +42,19 @@ export interface Category {
 }
 
 export interface ServiceCatalog {
-  id: number | string,
-  categoryName: string,
-  icon: IconType,
-  iconName: string,
-  offerings: Offerings[]
+  id: number | string;
+  categoryName: string;
+  icon: IconType;
+  iconName: string;
+  offerings: Offerings[];
+}
+
+export interface AllCategories {
+  id: number | string;
+  title: string;
+  description: string;
+  vendors: number;
+  image: string;
 }
 
 // Auth types

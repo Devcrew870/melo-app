@@ -23,12 +23,8 @@ const PopularCard = ({ item, onPress, badgeText }: Props) => {
   return (
     <View style={styles.card}>
       <View style={styles.imageContainer}>
-        <Image
-          style={styles.image}
-          source={{ uri: item.image}}
-        />
+        <Image style={styles.image} source={{ uri: item.image }} />
         {/* <View style={styles.overlay} /> */}
-
       </View>
       <View style={{ marginTop: 10, padding: 10 }}>
         <View
@@ -42,29 +38,36 @@ const PopularCard = ({ item, onPress, badgeText }: Props) => {
             <Text numberOfLines={1} style={styles.title}>
               {item.productName}
             </Text>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 15, paddingHorizontal: 10 }}>
-            <View style={styles.infoRow}>
-              <Fontisto
-                name="shopping-store"
-                size={10}
-                color={COLORS.primary}
-              />
-              <Text numberOfLines={1} style={styles.infoText}>
-                {item.vendorName}
-              </Text>
-            </View>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <EvilIcons name="location" size={18} color="gray" />
-              <Text style={{ fontSize: 10, color: 'gray', fontStyle: 'italic' }}>
-                {item.location?.address || ""}
-              </Text>
-            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 15,
+                paddingHorizontal: 10,
+              }}
+            >
+              <View style={styles.infoRow}>
+                <Fontisto
+                  name="shopping-store"
+                  size={10}
+                  color={COLORS.primary}
+                />
+                <Text numberOfLines={1} style={styles.infoText}>
+                  {item.vendorName}
+                </Text>
+              </View>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <EvilIcons name="location" size={18} color="gray" />
+                <Text
+                  style={{ fontSize: 10, color: 'gray', fontStyle: 'italic' }}
+                >
+                  {item.location?.address || ''}
+                </Text>
+              </View>
             </View>
           </View>
           <View style={{ flexDirection: 'column', columnGap: 10 }}>
-            <Text style={styles.price}>
-              ${item.price}
-            </Text>
+            <Text style={styles.price}>${item.price}</Text>
             <Text
               style={{
                 textTransform: 'uppercase',
@@ -89,7 +92,15 @@ const PopularCard = ({ item, onPress, badgeText }: Props) => {
           >{`${'"'}${item.description}.${'"'}`}</Text>
         </View>
 
-        <View style={{ padding: 10, flexDirection: 'row', gap: 10, alignItems: 'center', justifyContent: 'space-between' }}>
+        <View
+          style={{
+            padding: 10,
+            flexDirection: 'row',
+            gap: 10,
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
           <View>
             <TouchableOpacity
               style={{
@@ -102,7 +113,7 @@ const PopularCard = ({ item, onPress, badgeText }: Props) => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: 8,
-                borderRadius: 15
+                borderRadius: 15,
               }}
             >
               <MaterialIcons name="message" size={24} color="white" />
@@ -216,7 +227,7 @@ const styles = StyleSheet.create({
   price: {
     fontWeight: '600',
     fontSize: 18,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
   infoRow: {
     flexDirection: 'row',

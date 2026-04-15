@@ -5,22 +5,18 @@ import {
   View,
   StyleSheet,
   ImageBackground,
-  TouchableOpacity,
   FlatList,
   Platform,
   TextInput,
-  ScrollView,
   Dimensions,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Topbar from '@/src/components/layout/Topbar';
 import { categories, serviceCatalog } from '@/src/utils/constant';
 import PopularCard from '@/src/components/ui/PopularCard';
 import CategoryBadge from '@/src/components/ui/CategoryBadge';
 import Fontisto from '@expo/vector-icons/Fontisto';
-import Entypo from '@expo/vector-icons/Entypo';
 import { COLORS } from '@/src/theme/colors';
-import { Vendors, ServiceCatalog } from '@/src/types/types';
+import { ServiceCatalog } from '@/src/types/types';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -37,8 +33,8 @@ const CategoryCarousel = ({ item }: { item: ServiceCatalog }) => {
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
-        keyExtractor={(vendor) => `${item.id}-${vendor.id}`}
-        onMomentumScrollEnd={(e) => {
+        keyExtractor={vendor => `${item.id}-${vendor.id}`}
+        onMomentumScrollEnd={e => {
           const contentOffsetX = e.nativeEvent.contentOffset.x;
           const currentIndex = Math.round(contentOffsetX / screenWidth);
           setActiveIndex(currentIndex);
@@ -52,18 +48,20 @@ const CategoryCarousel = ({ item }: { item: ServiceCatalog }) => {
         )}
       />
       {vendors.length > 1 && (
-        <View style={{
-          position: 'absolute',
-          top: 30,
-          right: 35,
-          flexDirection: 'row',
-          alignItems: 'center',
-          backgroundColor: 'rgba(0,0,0,0.4)',
-          paddingHorizontal: 8,
-          paddingVertical: 5,
-          borderRadius: 12,
-          gap: 6
-        }}>
+        <View
+          style={{
+            position: 'absolute',
+            top: 30,
+            right: 35,
+            flexDirection: 'row',
+            alignItems: 'center',
+            backgroundColor: 'rgba(0,0,0,0.4)',
+            paddingHorizontal: 8,
+            paddingVertical: 5,
+            borderRadius: 12,
+            gap: 6,
+          }}
+        >
           {vendors.map((_, idx) => (
             <View
               key={idx}
@@ -71,7 +69,8 @@ const CategoryCarousel = ({ item }: { item: ServiceCatalog }) => {
                 width: 6,
                 height: 6,
                 borderRadius: 3,
-                backgroundColor: idx === activeIndex ? '#22C55E' : 'rgba(255,255,255,0.5)',
+                backgroundColor:
+                  idx === activeIndex ? '#22C55E' : 'rgba(255,255,255,0.5)',
               }}
             />
           ))}
@@ -121,8 +120,6 @@ export default function Home() {
 
   const renderHeader = () => (
     <View style={styles.headerWrapper}>
-      <Topbar />
-
       <View style={styles.searchBar}>
         <View style={styles.searchInputWrapper}>
           <TextInput
