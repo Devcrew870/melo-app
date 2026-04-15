@@ -75,7 +75,7 @@ const TabLayout = () => {
         name="profile"
         options={{
           headerShown: true,
-          header: () => <Topbar title="Local Vendors" />,
+          header: () => <Topbar title="Profile" />,
           tabBarIcon: ({ focused }) => (
             <MaterialIcons
               name="account-circle"
